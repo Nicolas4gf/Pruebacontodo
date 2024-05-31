@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva de Aparatos Topográficos</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: #004080;
+            padding: 2px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            height: 65px;
+            margin-right: 20px;
+        }
+
+        header h1 {
+            flex: 1;
+            text-align: center;
+            margin: 0;
+            font-size: 2em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+
+        nav {
+            background: #003366;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            display: block;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #002244;
+            border-radius: 5px;
+        }
+
+        main {
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .collage {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .collage img {
+            width: 200px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .collage img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .texto1 {
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .texto1 img {
+            max-width: 50%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+       footer {
+            background: #003366;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+            position: relative; /* Cambiar la posición a relativa */
+        }
+
+        .marca {
+            margin: 0;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #d0e7ff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(1, 0, 0, 0.9);
+        }
+
+        label, input, select {
+            margin: 10px 0;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        input, select {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            font-size: 1em;
+        }
+
+        input[type="submit"] {
+            background-color: #004080;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            font-size: 1.2em;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #002244;
+        }
+
+        h2 {
+            text-align: center;
+            color: #004080;
+            font-size: 2.2em;
+            margin: 20px 0;
+        }
+
+        h3 {
+            text-align: center;
+            color: #003366;
+            font-size: 1.8em;
+            margin: 20px 0;
+        }
+
+        p {
+            text-align: justify;
+            font-size: 1.2em;
+            line-height: 1.6em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Laboratorio de Instrumentación Topográfica y Geodésica</h1>
+		<a href="https://topografia.upm.es">
+           <img src="Imagenes/logoetsitg.png" alt="Descripción de la imagen">
+        </a>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#historia" onclick="mostrarApartado('historia')">Historia</a></li>
+            <li><a href="#reservas" onclick="mostrarApartado('reservas')">Reservas</a></li>
+            <li><a href="#contacto" onclick="mostrarApartado('contacto')">Contacto</a></li>
+            <li><a href="#catalogo" onclick="mostrarApartado('catalogo')">Catálogo</a></li>
+            <li><a href="#imagenes" onclick="mostrarApartado('imagenes')">Imágenes del laboratorio</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="historia">
+            <div class="texto1">
+                <p>¡Bienvenidos al Laboratorio Topográfico y Geodesia de la Universidad Politécnica de Madrid, ubicado en la Escuela Técnica Superior de Ingenieros en Geodesia, Cartografía y Topografía (ETSIGC)!.</p>
+                <p>En este sitio web, encontrarás información detallada nuestras instalaciones y equipos de última generación, así como los servicios que ofrecemos a la comunidad académica y profesional. Te invitamos a explorar nuestro sitio y descubrir cómo el Laboratorio Topográfico y Geodesia de la Universidad Politécnica de Madrid está impulsando el progreso en la ciencia y la tecnología geoespacial.</p>
+                <p class="resena">Reseña histórica de la Escuela</p>
+                <p>La Escuela de Ingeniería en Topografía, Geodesia y Cartografía de la Universidad Politécnica de Madrid tiene sus raíces en el cuerpo de Ingenieros Cosmógrafos de Estado y el Real Observatorio de la Escuela de Astronomía, creados en 1796. A lo largo de los años, diversos decretos y leyes han impulsado la creación y evolución de instituciones educativas relacionadas con la topografía y la geodesia, como la Escuela Teórico-Práctica de Ayudantes fundada en 1859 y el Instituto Geográfico en 1870. En 1954 se establece la Escuela de Topografía, integrada posteriormente en la Universidad Politécnica de Madrid en 1971.</p>
+                <p>Desde entonces, la escuela ha seguido un camino de adaptación a los cambios normativos, como la Ley de Ordenación de las Enseñanzas Técnicas de 1957 y la Ley de Reforma Universitaria de 1983, hasta llegar a la actualidad donde se enfrenta al reto de implementar nuevas titulaciones conforme a los estándares de Bolonia y el Espacio Europeo de Educación Superior. Este proceso implica una renovación significativa de contenidos y metodologías, orientada hacia la calidad establecida por la UPM.</p>
+                <img src="Imagenes/campus.jpg" alt="Campus sur">
+                <img src="Imagenes/biblioteca.jpg" alt="Biblioteca UPM">
+            </div>
+        </section>
+        <section id="reservas" class="hidden">
+            <h2>Reservar Aparatos</h2>
+            <form action="https://formsubmit.co/d7c24b3d25f7bf3e3308e9b5af7eedef" method="POST">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="fecha">Fecha de reserva:</label>
+                <input type="date" id="fecha" name="fecha" required>
+                <label for="hora_inicio">Hora de inicio:</label>
+                <input type="time" id="hora_inicio" name="hora_inicio" required>
+                <label for="hora_fin">Hora de fin:</label>
+                <input type="time" id="hora_fin" name="hora_fin" required>
+                <label for="aparato">Aparato:</label>
+                <select id="aparato" name="aparato">
+                    <option value="estacion_total">Taquímetro</option>
+                    <option value="gps">GPS</option>
+                    <option value="nivel">Nivel</option>
+                    <option value="telemetro">Telémetro</option>
+                    <option value="laser_escaner">Láser Escáner</option>
+                    <option value="distanciometro">Distanciómetro</option>
+                    <option value="brujula">Brújula</option>
+                    <option value="equipo_poligonacion">Equipo de poligonación</option>
+                </select>
+                <input type="submit" value="Reservar">
+            </form>
+        </section>
+        <div id="mensaje_confirmacion" class="hidden">
+            <p>¡Perfecto! Su solicitud ha sido enviada con éxito. Recibirá un correo electrónico cuando su reserva haya sido aceptada.</p>
+        </div>
+        <section id="contacto" class="hidden">
+            <h2>Contacto</h2>
+            <p>Laboratorio de Instrumental Topográfico y Geodésico</p>
+            <p>Teléfono: 91.067.3848</p>
+            <p>Email: laboratorioaparatos@topografia.upm.es</p>
+			  <form action="https://formsubmit.co/d7c24b3d25f7bf3e3308e9b5af7eedef" method="POST">
+                <label for="nombre-contacto">Nombre:</label>
+                <input type="text" id="nombre-contacto" name="nombre-contacto" required>
+                <label for="email-contacto">Email:</label>
+                <input type="email" id="email-contacto" name="email-contacto" required>
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="4" required></textarea>
+                <input type="submit" value="Enviar Consulta">
+            </form>
+        </section>
+        <section id="catalogo" class="hidden">
+            <h2>Catálogo de Aparatos Disponibles</h2>
+             <iframe src="consulta_aparatos.php" style="width: 100%; height: 500px; border: none;"></iframe>
+            <!-- Agrega más secciones según los aparatos disponibles -->
+        </section>
+        <section id="imagenes" class="hidden">
+            <h2>Imágenes del Laboratorio</h2>
+            <div class="collage">
+                <img src="Imagenes/fotolab1.png" alt="Escuadra de prismas">
+                <img src="Imagenes/fotolab2.png" alt="Barómetro">
+                <img src="fotolab3.jpg" alt="Lab 3">
+                <img src="fotolab4.jpg" alt="Lab 4">
+                <img src="fotolab5.jpg" alt="Lab 5">
+                <img src="fotolab6.jpg" alt="Lab 6">
+                <img src="fotolab7.jpg" alt="Lab 7">
+                <img src="fotolab8.jpg" alt="Lab 8">
+                <img src="fotolab9.jpg" alt="Lab 9">
+                <img src="fotolab10.jpg" alt="Lab 10">
+				<img src="fotolab11.jpg" alt="Lab 11">
+                <img src="fotolab12.jpg" alt="Lab 12">
+                <img src="fotolab13.jpg" alt="Lab 13">
+                <img src="fotolab14.jpg" alt="Lab 14">
+                <img src="fotolab15.jpg" alt="Lab 15">
+				<img src="fotolab16.jpg" alt="Lab 16">
+                <img src="fotolab17.jpg" alt="Lab 17">
+                <img src="fotolab18.jpg" alt="Lab 18">
+				<img src="fotolab19.jpg" alt="Lab 19">
+                <img src="fotolab20.jpg" alt="Lab 20">
+                <img src="fotolab21.jpg" alt="Lab 21">
+                <img src="fotolab22.jpg" alt="Lab 22">
+				<img src="fotolab23.jpg" alt="Lab 23">
+                <img src="fotolab24.jpg" alt="Lab 24">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="marca">
+            <p>&copy; 2024 Nicolás Gutiérrez Fidalgo. Laboratorio de Instrumentación Topográfica y Geodesia</p>
+        </div>
+    </footer>
+    <script>
+        function mostrarApartado(id) {
+            var apartados = document.querySelectorAll('section');
+            for (var i = 0; i < apartados.length; i++) {
+                apartados[i].classList.add('hidden');
+            }
+            var apartadoMostrado = document.getElementById(id);
+            apartadoMostrado.classList.remove('hidden');
+        }
+
+        var fechaInput = document.getElementById("fecha");
+        var fechaActual = new Date().toISOString().split("T")[0];
+        fechaInput.setAttribute("min", fechaActual);
+
+        function validarHora() {
+            var horaInicio = document.getElementById("hora_inicio").value;
+            var horaFin = document.getElementById("hora_fin").value;
+            if (horaFin <= horaInicio) {
+                alert("La hora de fin debe ser posterior a la hora de inicio.");
+                return false;
+            }
+            mostrarMensajeConfirmacion();
+            return true;
+        }
+
+        function mostrarMensajeConfirmacion() {
+            var mensaje = document.getElementById("mensaje_confirmacion");
+            mensaje.classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
